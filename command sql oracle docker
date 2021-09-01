@@ -1,0 +1,40 @@
+## CREAR IMAGEN
+
+docker pull store/oracle/database-enterprise:12.2.0.1
+
+## CREAR CONTENEDOR
+docker run -d -p 1521:1521 --name oracle store/oracle/database-enterprise:12.2.0.1
+
+##CONECTARSE DESDE CONSOLA
+docker exec -it <ID-Contenedor o nombre> bash -c "source /home/oracle/.bashrc; sqlplus /nolog"
+
+### ingresar usuario dentro de la consola
+connect sys as sysdba;  
+``dejar el password en blanco
+alter session set "_ORACLE_SCRIPT"=true;
+
+### crear usuario
+create user <your-user> identified by <your-identify>;
+
+### otorgar permisos
+GRANT ALL PRIVILEGES TO <your-user>;
+
+## Configure SQL client
+
+ Username: <your-user>
+ Password: <your-user>
+ Hostname: localhost
+ Port: 1521
+ Service name: ORCLCDB.localdomain
+
+otros 
+
+docker exec -it  300b9166b0da /bin/bash     ---usar contenedor por consola
+ 
+ 
+docker stop       	  ---detener contenedor
+docker rm        	  ---eliminar contenedor
+docker rmi       	  ---eliminar imagen
+docker start     	  ---iniciar contenedor detenido
+docker system prune      ---eliminar todos los objetos detenidos
+docker system prune -a   ---eliminar todo
