@@ -18,7 +18,7 @@ docker exec -it <ID-Contenedor o nombre> bash -c "source /home/oracle/.bashrc; s
 ```
 connect sys as sysdba;  
 ```
--- dejar el password en blanco
+`dejar el password en blanco`
 ```
 alter session set "_ORACLE_SCRIPT"=true;
 ```
